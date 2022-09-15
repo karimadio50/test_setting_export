@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <h1 class="">
+      Export Setting File
+    </h1>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <nz-upload
+        #inputFile
+        nzType="drag"
+        nzOpenFileDialogOnClick="true"
+        nzAccept=".csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+        [nzBeforeUpload]="beforeUpload">
+        <p class="ant-upload-drag-icon">
+        </p>
+        <p class="ant-upload-text">Click or drag file to this area to upload</p>
+        <p class="ant-upload-hint">
+          Support for a single or bulk upload. Strictly prohibit from uploading company data or other band files
+        </p>
+      </nz-upload>
+      <p class="h5 text-secondary mt-2 p-lg-5" *ngIf="file !== undefined">{{file.name}}</p>
+      <button
+        nz-button
+        [nzType]="'primary'"
+        [nzLoading]="uploading"
+        (click)="handleUpload()"
+        [disabled]="!file"
+        style="margin-top: 16px">
+        {{ uploading ? 'Uploading' : 'Start Upload' }}
+      </button>
+    </div>
+  </div>
+</div>
